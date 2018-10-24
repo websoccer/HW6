@@ -2,14 +2,56 @@ import re
 import unittest
 
 def sumNums(fileName):
-    n = 1
-    pass
+    total = 0
+    #open the file
+    hand = open(fileName)
 
+    #loop through the lines
+    for line in hand:
+
+        line = line.rstrip()
+        
+        a = re.findall('([0-9]+)', line)
+        if a != []:
+            for nums in a:
+                total += int(nums)
+    print(total)
+    return total
+           
 def countWord(fileName, word):
-    pass
+
+    hand = open(fileName)
+    word_count = 0
+
+    for line in hand:
+        line = line.rstrip()
+
+        word = re.findall("\b[a-zA-Z]+\b", line) 
+        
+        if word in line:
+           word_count += 1
+    print(int(word_count))           
+    return word_count
+    
+
 
 def listURLs(fileName):
-    pass
+    urls = []
+    hand = open(fileName)
+
+    for line in hand:
+        line = line.rstrip()
+
+        url = re.findall("w{3}\.[a-zA-Z0-9_.+-]+\.[a-zA-Z0-9-.]+", line)
+        if url != []:
+            urls += url
+        
+    print(urls)
+    return urls
+
+sumNums("regex_sum_132198.txt")
+countWord("regex_sum_132198.txt","program")
+listURLs("regex_sum_132198.txt")
 
 
 class TestHW6(unittest.TestCase):
