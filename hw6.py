@@ -2,6 +2,7 @@ import re
 import unittest
 
 def sumNums(fileName):
+    n = 1
     pass
 
 def countWord(fileName, word):
