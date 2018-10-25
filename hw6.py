@@ -20,18 +20,21 @@ def sumNums(fileName):
            
 def countWord(fileName, word):
 
-    hand = open(fileName)
+    
+    wordList = []
     word_count = 0
-
+   
+    hand = open(fileName)
+    
     for line in hand:
-        line = line.rstrip()
-
-        word = re.findall("\b[a-zA-Z]+\b", line) 
+       #re.findall(r'\b' + word + r'b')
+        words = re.findall(r'\b' + word + r'\b', line, flags = re.IGNORECASE)
         
-        if word in line:
-           word_count += 1
-    print(int(word_count))           
-    return word_count
+        wordList = wordList + words
+    word_count = len(wordList)
+    print(word_count)
+    return(word_count)
+
     
 
 
@@ -50,7 +53,7 @@ def listURLs(fileName):
     return urls
 
 sumNums("regex_sum_132198.txt")
-countWord("regex_sum_132198.txt","program")
+countWord("regex_sum_132198.txt","computer")
 listURLs("regex_sum_132198.txt")
 
 
